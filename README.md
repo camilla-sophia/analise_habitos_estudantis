@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Dashboard: Hábitos de Estudo e Desempenho Acadêmico
 
 Projeto de análise de dados sobre hábitos de estudo e desempenho acadêmico de alunos, com dashboard interativo desenvolvido em Streamlit.
@@ -44,7 +43,3 @@ streamlit run app.py
 
 - Adicionar mais visualizações interativas
 - Publicar o dashboard online
-=======
-# analise_habitos_estudantis
-Análise de hábitos estudantis por meio de gráficos utilizando python, pandas e numpy
->>>>>>> 496be90a25ec27df2b3e2da6248d3d1e461a3d3d
