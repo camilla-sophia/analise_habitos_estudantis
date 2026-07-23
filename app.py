@@ -20,6 +20,12 @@ trabalho = st.sidebar.multiselect(
     default=[True, False]
 )
 
+extracurricular = st.sidebar.multiselect(
+    'Atividades extracurriculares',
+    options=[True, False],
+    default=[True, False]
+)
+
 horas_estudo = st.sidebar.slider(
     'Horas de estudo (mínimo)',
     min_value=float(df['study_time_hours'].min()),
