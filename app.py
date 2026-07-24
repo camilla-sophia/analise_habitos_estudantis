@@ -40,7 +40,15 @@ if 'Female' not in genero:
     df_filtrado = df_filtrado[df_filtrado['gender_Male'] == True]
 df_filtrado = df_filtrado[df_filtrado['part_time_job_Yes'].isin(trabalho)]
 
-st.write(f'Mostrando {len(df_filtrado)} de {len(df)} alunos')
+#dividir tela em 4 colunas
+col1, col2, col3, col4 = st.columns(4)
+
+#cria um "card" dentro da coluna 1 com o rótulo "Alunos filtrados" e um valor em baixo (quantidade de alunos que sobrou depois do filtro)
+col1.metric('Alunos filtrados', len(df_filtrado))
+#:.1f formata o número para uma casa decimal
+col2.metric('Nota Média', f"{df_filtrado['final_exam_score'].mean():.1f}")
+col3.metric('Horas de Estudo (média)', f"{df_filtrado['study_time_hours'].mean():.1f}h")
+col4.metric('Frequência Média', f"{df_filtrado['attendance_percent'].mean():.1f}%")
 st.write(df_filtrado.head())
 
 st.subheader('Horas de Estudo x Nota Final')
