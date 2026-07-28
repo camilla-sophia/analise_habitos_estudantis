@@ -49,7 +49,17 @@ col1.metric('Alunos filtrados', len(df_filtrado))
 col2.metric('Nota Média', f"{df_filtrado['final_exam_score'].mean():.1f}")
 col3.metric('Horas de Estudo (média)', f"{df_filtrado['study_time_hours'].mean():.1f}h")
 col4.metric('Frequência Média', f"{df_filtrado['attendance_percent'].mean():.1f}%")
-st.write(df_filtrado.head())
+
+nomes_colunas = {
+    'student_id': 'ID',
+    'study_time_hours': 'Horas de Estudo',
+    'attendance_percent': 'Frequência (%)',
+    'sleep_hours': 'Horas de Sono',
+    'previous_grade': 'Nota Anterior',
+    'final_exam_score': 'Nota Final'
+}
+
+st.write(df_filtrado.rename(columns=nomes_colunas).head)
 
 st.subheader('Horas de Estudo x Nota Final')
 fig1 = px.scatter(df_filtrado, x='study_time_hours', y='final_exam_score', labels={'study_time_hours': 'Horas de Estudo', 'final_exam_score': 'Nota Final'})
