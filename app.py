@@ -6,6 +6,16 @@ st.title('Dashboard: Hábitos de Estudo e Desempenho Acadêmico')
 
 df = pd.read_csv('student_habits_tratado.csv')
 
+nomes_legiveis = {
+    'student_id': 'ID',
+    'study_time_hours': 'Horas de Estudo',
+    'attendance_percent': 'Frequência (%)',
+    'sleep_hours': 'Horas de Sono',
+    'previous_grade': 'Nota Anterior',
+    'final_exam_score': 'Nota Final',
+    'final_grade': 'Conceito'
+}
+
 st.sidebar.header('Filtros')
 
 genero = st.sidebar.multiselect(
@@ -50,16 +60,12 @@ col2.metric('Nota Média', f"{df_filtrado['final_exam_score'].mean():.1f}")
 col3.metric('Horas de Estudo (média)', f"{df_filtrado['study_time_hours'].mean():.1f}h")
 col4.metric('Frequência Média', f"{df_filtrado['attendance_percent'].mean():.1f}%")
 
-nomes_colunas = {
-    'student_id': 'ID',
-    'study_time_hours': 'Horas de Estudo',
-    'attendance_percent': 'Frequência (%)',
-    'sleep_hours': 'Horas de Sono',
-    'previous_grade': 'Nota Anterior',
-    'final_exam_score': 'Nota Final'
-}
+colunas_exibicao = ['student_id', 'study_time_hours', 'attendance_percent', 'sleep_hours', 
+                    'previous_grade', 'final_exam_score', 'final_grade']
 
-st.write(df_filtrado.rename(columns=nomes_colunas).head())
+st.dataframe(df_filtrado[colunas_exibicao].rename(columns=nomes_legiveis), use_container_width=True)
+
+st.write(df_filtrado.rename(columns=nomes_legiveis).head())
 
 st.subheader('Horas de Estudo x Nota Final')
 fig1 = px.scatter(df_filtrado, x='study_time_hours', y='final_exam_score', labels={'study_time_hours': 'Horas de Estudo', 'final_exam_score': 'Nota Final'})
@@ -75,13 +81,6 @@ st.subheader('Mapa de Correlação entre Variáveis')
 
 colunas_numericas = ['study_time_hours', 'attendance_percent', 'sleep_hours', 'previous_grade', 'final_exam_score']
 
-nomes_legiveis = {
-    'study_time_hours': 'Horas de Estudo',
-    'attendance_percent': 'Frequência (%)',
-    'sleep_hours': 'Horas de Sono',
-    'previous_grade': 'Nota Anterior',
-    'final_exam_score': 'Nota Final'
-}
 #calcular correlação entre variáveis numéricas com dados já filtrados
 correlacao = df_filtrado[colunas_numericas].corr()
 
