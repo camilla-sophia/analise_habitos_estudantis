@@ -68,9 +68,8 @@ correlacao = df_filtrado[colunas_numericas].corr()
 
 fig3 = px.imshow(correlacao, text_auto='.2f', color_continuous_scale='RdBu_r', zmin=-1, zmax=1, labels=dict(color='Correlação'))
 st.plotly_chart(fig3)
-'''
-    px.imshow: criar heatmap
-    text_auto='.2f': valor exato dentro de cada célula com 2 casas decimais
-    color_continuous_scale='RdBu_r': definição de escala de cores (vermelho para valores negativos e azul para positivos)
-    zmin=-1, zmax=1: fixa escala de cor entre -1 e 1, já que a correlação sempre fica nesse intervalo
-'''
+
+#px.imshow: criar heatmap
+#text_auto='.2f': valor exato dentro de cada célula com 2 casas decimais
+#color_continuous_scale='RdBu_r': definição de escala de cores (vermelho para valores negativos e azul para positivos)
+#zmin=-1, zmax=1: fixa escala de cor entre -1 e 1, já que a correlação sempre fica nesse intervalo
