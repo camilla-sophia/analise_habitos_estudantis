@@ -56,17 +56,32 @@ fig1 = px.scatter(df_filtrado, x='study_time_hours', y='final_exam_score', label
 st.plotly_chart(fig1)
 
 st.subheader('Distribuição da Nota Final')
-fig2 = px.histogram(df_filtrado, x='final_exam_score', nbins=20, labels={'final_exam_score': 'Nota Final'})
+fig2 = px.histogram(df_filtrado, x='final_exam_score', nbins=20, 
+                    labels={'final_exam_score': 'Nota Final'})
+fig2.update_layout(yaxis_title='Quantidade de Alunos')
 st.plotly_chart(fig2)
 
 st.subheader('Mapa de Correlação entre Variáveis')
 
 colunas_numericas = ['study_time_hours', 'attendance_percent', 'sleep_hours', 'previous_grade', 'final_exam_score']
 
+nomes_legiveis = {
+    'study_time_hours': 'Horas de Estudo',
+    'attendance_percent': 'Frequência (%)',
+    'sleep_hours': 'Horas de Sono',
+    'previous_grade': 'Nota Anterior',
+    'final_exam_score': 'Nota Final'
+}
 #calcular correlação entre variáveis numéricas com dados já filtrados
 correlacao = df_filtrado[colunas_numericas].corr()
 
-fig3 = px.imshow(correlacao, text_auto='.2f', color_continuous_scale='RdBu_r', zmin=-1, zmax=1, labels=dict(color='Correlação'))
+st.subheader('Mapa de Correlação entre Variáveis')
+
+colunas_numericas = ['study_time_hours', 'attendance_percent', 'sleep_hours', 'previous_grade', 'final_exam_score']
+
+correlacao_legivel = correlacao.rename(columns=nomes_legiveis, index=nomes_legiveis)
+
+fig3 = px.imshow(correlacao_legivel, text_auto='.2f', color_continuous_scale='RdBu_r', zmin=-1, zmax=1, labels=dict(color='Correlação'))
 st.plotly_chart(fig3)
 
 #px.imshow: criar heatmap
