@@ -74,7 +74,7 @@ st.plotly_chart(fig3)
 #color_continuous_scale='RdBu_r': definição de escala de cores (vermelho para valores negativos e azul para positivos)
 #zmin=-1, zmax=1: fixa escala de cor entre -1 e 1, já que a correlação sempre fica nesse intervalo
 
-st.sunheader('Escolaridade dos Pais x Nota Final Média')
+st.subheader('Escolaridade dos Pais x Nota Final Média')
 
 colunas_educacao = ['parental_education_Bachelors', 'parental_education_High School', 
                     'parental_education_Masters', 'parental_education_Not specified', 
