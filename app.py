@@ -58,3 +58,19 @@ st.plotly_chart(fig1)
 st.subheader('Distribuição da Nota Final')
 fig2 = px.histogram(df_filtrado, x='final_exam_score', nbins=20, labels={'final_exam_score': 'Nota Final'})
 st.plotly_chart(fig2)
+
+st.subheader('Mapa de Correlação entre Variáveis')
+
+colunas_numericas = ['study_time_hours', 'attendance_percent', 'sleep_hours', 'previous_grade', 'final_exam_score']
+
+#calcular correlação entre variáveis numéricas com dados já filtrados
+correlacao = df_filtrado[colunas_numericas].corr()
+
+fig3 = px.imshow(correlacao, text_auto='.2f', color_continuous_scale='RdBu_r', zmin=-1, zmax=1, labels=dict(color='Correlação'))
+st.plotly_chart(fig3)
+'''
+    px.imshow: criar heatmap
+    text_auto='.2f': valor exato dentro de cada célula com 2 casas decimais
+    color_continuous_scale='RdBu_r': definição de escala de cores (vermelho para valores negativos e azul para positivos)
+    zmin=-1, zmax=1: fixa escala de cor entre -1 e 1, já que a correlação sempre fica nesse intervalo
+'''
