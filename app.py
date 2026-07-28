@@ -59,7 +59,7 @@ nomes_colunas = {
     'final_exam_score': 'Nota Final'
 }
 
-st.write(df_filtrado.rename(columns=nomes_colunas).head)
+st.write(df_filtrado.rename(columns=nomes_colunas).head())
 
 st.subheader('Horas de Estudo x Nota Final')
 fig1 = px.scatter(df_filtrado, x='study_time_hours', y='final_exam_score', labels={'study_time_hours': 'Horas de Estudo', 'final_exam_score': 'Nota Final'})
