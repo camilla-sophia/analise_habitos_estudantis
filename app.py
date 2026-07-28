@@ -75,8 +75,6 @@ fig2 = px.histogram(df_filtrado, x='final_exam_score', nbins=20,
 fig2.update_layout(yaxis_title='Quantidade de Alunos')
 st.plotly_chart(fig2)
 
-st.subheader('Mapa de Correlação entre Variáveis')
-
 colunas_numericas = ['study_time_hours', 'attendance_percent', 'sleep_hours', 'previous_grade', 'final_exam_score']
 
 #calcular correlação entre variáveis numéricas com dados já filtrados
