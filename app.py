@@ -88,4 +88,5 @@ media_por_educacao = df_filtrado.groupby('parental_education_temp')['final_exam_
 
 fig4 = px.bar(media_por_educacao, x='parental_education_temp', y='final_exam_score',
               labels={'parental_education_temp': 'Escolaridade dos Pais', 'final_exam_score': 'Nota Final Média'})
+fig4.update_yaxes(range=[80,87])
 st.plotly_chart(fig4)
