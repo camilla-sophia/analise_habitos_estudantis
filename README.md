@@ -38,8 +38,3 @@ Explorar a relação entre hábitos de estudo (horas de estudo, frequência, son
 pip install -r requirements.txt
 streamlit run app.py
 ```
-
-## Próximos passos
-
-- Adicionar mais visualizações interativas
-- Publicar o dashboard online
