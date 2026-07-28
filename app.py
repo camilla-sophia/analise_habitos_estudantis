@@ -63,7 +63,7 @@ col4.metric('Frequência Média', f"{df_filtrado['attendance_percent'].mean():.1
 colunas_exibicao = ['student_id', 'study_time_hours', 'attendance_percent', 'sleep_hours', 
                     'previous_grade', 'final_exam_score', 'final_grade']
 
-st.dataframe(df_filtrado[colunas_exibicao].rename(columns=nomes_legiveis), use_container_width=True)
+st.dataframe(df_filtrado[colunas_exibicao].rename(columns=nomes_legiveis), use_container_width=True, hide_index=True)
 
 st.subheader('Horas de Estudo x Nota Final')
 fig1 = px.scatter(df_filtrado, x='study_time_hours', y='final_exam_score', labels={'study_time_hours': 'Horas de Estudo', 'final_exam_score': 'Nota Final'})
