@@ -73,3 +73,19 @@ st.plotly_chart(fig3)
 #text_auto='.2f': valor exato dentro de cada célula com 2 casas decimais
 #color_continuous_scale='RdBu_r': definição de escala de cores (vermelho para valores negativos e azul para positivos)
 #zmin=-1, zmax=1: fixa escala de cor entre -1 e 1, já que a correlação sempre fica nesse intervalo
+
+st.sunheader('Escolaridade dos Pais x Nota Final Média')
+
+colunas_educacao = ['parental_education_Bachelors', 'parental_education_High School', 
+                    'parental_education_Masters', 'parental_education_Not specified', 
+                    'parental_education_PhD']
+
+df_filtrado['parental_education_temp'] = df_filtrado[colunas_educacao].idxmax(axis=1).str.replace('parental_education_', '')
+
+media_por_educacao = df_filtrado.groupby('parental_education_temp')['final_exam_score'].mean().reindex(
+    ['Not specified', 'High School', 'Bachelors', 'Masters', 'PhD']
+).reset_index()
+
+fig4 = px.bar(media_por_educacao, x='parental_education_temp', y='final_exam_score'
+              labels={'parental_education_temp': 'Escolaridade dos Pais', 'final_exam_score': 'Nota Final Média'})
+st.plotly_chart(fig4)
